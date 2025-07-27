@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo List</title>
+    <style>
+        body { font-family: sans-serif; padding: 2em; }
+        form { margin-bottom: 1em; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 0.5em 0; }
+        .delete { color: red; text-decoration: none; margin-left: 1em; }
+    </style>
+</head>
+<body>
+    <h1>📝 My ToDo List</h1>
+    <form method="POST" action="/add">
+        <input type="text" name="task" placeholder="Add a new task" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task }}
+            <a href="/delete/{{ loop.index0 }}" class="delete">[delete]</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
